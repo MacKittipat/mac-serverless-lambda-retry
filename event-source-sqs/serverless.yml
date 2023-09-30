@@ -1,4 +1,4 @@
-service: mac-serverless-lambda-retry
+service: mac-serverless-lambda-retry-sqs
 frameworkVersion: "3"
 
 provider:
@@ -20,8 +20,6 @@ functions:
                 - Ref: AWS::Region
                 - Ref: AWS::AccountId
                 - my-data-queue
-          batchSize: 10
-          functionResponseType: ReportBatchItemFailures
 
 resources:
   Resources:

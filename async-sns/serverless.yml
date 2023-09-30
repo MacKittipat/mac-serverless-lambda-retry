@@ -1,0 +1,22 @@
+service: mac-serverless-lambda-retry-sns
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  region: ap-southeast-1
+  runtime: nodejs18.x
+
+functions:
+  trigger:
+    handler: index.trigger
+    events:
+      - sns:
+          arn: !Ref MyDataTopic
+          topicName: my-data-topic
+ 
+resources:
+  Resources:
+    MyDataTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: my-data-topic
